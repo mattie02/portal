@@ -101,13 +101,10 @@
                             </div>
                                 
                         @endif
-                    
-                    
-                    
+
                     </div>
                 </div>
             </div>
-            
 
         <main class="py-4">
             @yield('content')
