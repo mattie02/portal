@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                     <form action="{{ route('member_type.store') }}" method="POST">
                         {{csrf_field()}}
 
-                        @include('dashbord.memtype._form')
+                        @include('dashboard.memtype._form')
 
                         
                     </form>

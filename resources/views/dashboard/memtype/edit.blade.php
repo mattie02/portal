@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 
@@ -17,7 +17,7 @@
                         {{csrf_field()}}
                         {{method_field('PUT')}}
 
-                        @include('dashbord.memtype._form', [
+                        @include('dashboard.memtype._form', [
                                     'submitButtonText' => 'Save'
                                 ])
 
