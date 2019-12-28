@@ -14,7 +14,7 @@ class MemberTypeController extends Controller
      */
     public function index()
     {
-        return view('dashbord.memtype.index', [
+        return view('dashboard.memtype.index', [
             'data' => MemberType::latest()->get()
         ]);
     }
@@ -26,7 +26,7 @@ class MemberTypeController extends Controller
      */
     public function create()
     {
-      return view('dashbord.memtype.create', [
+      return view('dashboard.memtype.create', [
           'data' => new MemberType
       ]);  
     }
@@ -76,7 +76,7 @@ class MemberTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(MemberType $memtype) {
-        return view('dashbord.memtype.edit', [
+        return view('dashboard.memtype.edit', [
             'data' => $memtype
         ]);
     }

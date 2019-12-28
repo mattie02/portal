@@ -15,13 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Controles register
+//Auth::routes();
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Auth Control
+Route::prefix('dashboard')->middleware('auth')->group(function() {
 
-Route::resource('/member_type', 'MemberTypeController', [
-    //Change URI name
-    'parameters' => [
-        'member_type' => 'memtype'
-    ]
-]); 
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('/member_type', 'MemberTypeController', [
+        //Change URI name
+        'parameters' => [
+            'member_type' => 'memtype'
+        ]
+    ]); 
+
+});
