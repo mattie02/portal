@@ -75,8 +75,7 @@ class MemberTypeController extends Controller
      * @param  \App\MemberType  $memberType
      * @return \Illuminate\Http\Response
      */
-    public function edit(MemberType $memtype)
-    {
+    public function edit(MemberType $memtype) {
         return view('dashbord.memtype.edit', [
             'data' => $memtype
         ]);
