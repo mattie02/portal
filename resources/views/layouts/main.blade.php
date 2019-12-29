@@ -74,43 +74,31 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-md-12">
-                       
-                       @if ($message = Session::get('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                {{ $message }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @endif
-                    
-            
-                         @if ($errors->any())
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <strong>Please check the form below for the following errors</strong>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                                
-                        @endif
-
-                    </div>
-                </div>
-            </div>
+        @include('layouts._inc._flash')
 
         <main class="py-4">
-            @yield('content')
+            <div class="container-fluid"> 
+                <div class="row justify-content-center">
+
+                    <div class="col-md-2">
+                        <div class="list-group">
+                            <a href="{{ route('home')}}" class="list-group-item list-group-item-action active">Home</a>
+                            <a href="{{ route('member_type.index') }}" class="list-group-item list-group-item-action">Member Types</a>
+                            <a href="{{ route('users.index') }}" class="list-group-item list-group-item-action">Manage Users</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10">
+                            @yield('content')
+                    </div>
+
+                </div>
+            </div>
         </main>
     </div>
+
+
+
 
     <!-- Script -->
     <script

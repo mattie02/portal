@@ -32,4 +32,6 @@ Route::prefix('dashboard')->middleware('auth')->group(function() {
         ]
     ]); 
 
+    Route::resource('/users', 'ManageUsersController');
+
 });
