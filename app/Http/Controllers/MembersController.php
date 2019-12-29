@@ -80,21 +80,22 @@ class MembersController extends Controller
      * @param  \App\Members  $members
      * @return \Illuminate\Http\Response
      */
-    public function show(Members $members)
+    public function show(Members $member)
     {
-        return $members;
+        return $member;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Members  $members
+     * @param  \App\Members  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit(Members $members)
+    public function edit(Members $member)
     {
+        //dd($member);
         return view('dashboard.members.edit', [
-            'data' => $members
+            'data' => $member
         ]);
     }
 
@@ -102,10 +103,10 @@ class MembersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Members  $members
+     * @param  \App\Members  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Members $members)
+    public function update(Request $request, Members $member)
     {
         $this->validate($request, [
             'lname'                => 'required|max:255',
@@ -115,6 +116,7 @@ class MembersController extends Controller
         ]);
 
         $store = $request->all();
+        unset($store['_token']);
 
         // If checkbox is empty, asign 'active' as 0
         if($request->has('email_private')) {
@@ -137,7 +139,7 @@ class MembersController extends Controller
             $store['phone_alt_private'] = 0;
         }  
 
-        Members::update($store);
+        $member->update($store);
 
         return redirect()->route('members.index')->with('sucess', 'Membes Updated');
     }
@@ -145,12 +147,12 @@ class MembersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Members  $members
+     * @param  \App\Members  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Members $members)
+    public function destroy(Members $member)
     {
-        $members->delete();
+        $member->delete();
         return redirect()->route('members.index')->with('sucess', 'Members Deleted');
     }
 }

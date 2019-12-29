@@ -17,7 +17,7 @@
                         {{csrf_field()}}
                         {{method_field('PUT')}}
 
-                        @include('dashboard.members_form', [
+                        @include('dashboard.members._form', [
                                     'submitButtonText' => 'Save'
                                 ])
 
