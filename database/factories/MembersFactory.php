@@ -24,6 +24,6 @@ $factory->define(Members::class, function (Faker $faker) {
         'zip'                  => $faker->numberBetween(10000,99999),
         'mem_type_id'          => $faker->numberBetween(1,10),
         'mem_sponser_id'       => $faker->numberBetween(1,99),
-        'user_id'              => $faker->numberBetween(1,99),
+        'user_id'              => $faker->numberBetween(1,99)
     ];
 });
