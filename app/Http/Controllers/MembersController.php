@@ -14,7 +14,9 @@ class MembersController extends Controller
      */
     public function index()
     {
-        return Members::latest()->get();
+        return view('dashboard.members.index', [
+            'data' => Members::latest()->get()
+        ]);
     }
 
     /**
@@ -24,7 +26,9 @@ class MembersController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.members.create', [
+            'data' => new Members
+        ]);
     }
 
     /**
@@ -35,7 +39,39 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'lname'                => 'required|max:255',
+            'fname'                => 'required|max:255',
+            'dob'                  => 'required',
+            'email'                => 'required|max:255'
+        ]);
+
+        $store = $request->all();
+
+        // If checkbox is empty, asign 'active' as 0
+        if($request->has('email_private')) {
+            $store['email_private'] = $request->email_private;
+        } else {
+            $store['email_private'] = 0;
+        }  
+
+        // If checkbox is empty, asign 'active' as 0
+        if($request->has('phone_mobile_private')) {
+            $store['phone_mobile_private'] = $request->phone_mobile_private;
+        } else {
+            $store['phone_mobile_private'] = 0;
+        }  
+
+        // If checkbox is empty, asign 'active' as 0
+        if($request->has('phone_alt_private')) {
+            $store['phone_alt_private'] = $request->phone_alt_private;
+        } else {
+            $store['phone_alt_private'] = 0;
+        }               
+
+
+        Members::create($store);
+        return redirect()->route('members.index')->with('sucess', 'Member Created');
     }
 
     /**
@@ -46,7 +82,7 @@ class MembersController extends Controller
      */
     public function show(Members $members)
     {
-        //
+        return $members;
     }
 
     /**
@@ -57,7 +93,9 @@ class MembersController extends Controller
      */
     public function edit(Members $members)
     {
-        //
+        return view('dashboard.members.edit', [
+            'data' => $members
+        ]);
     }
 
     /**
@@ -69,7 +107,39 @@ class MembersController extends Controller
      */
     public function update(Request $request, Members $members)
     {
-        //
+        $this->validate($request, [
+            'lname'                => 'required|max:255',
+            'fname'                => 'required|max:255',
+            'dob'                  => 'required',
+            'email'                => 'required|max:255'
+        ]);
+
+        $store = $request->all();
+
+        // If checkbox is empty, asign 'active' as 0
+        if($request->has('email_private')) {
+            $store['email_private'] = $request->email_private;
+        } else {
+            $store['email_private'] = 0;
+        }  
+
+        // If checkbox is empty, asign 'active' as 0
+        if($request->has('phone_mobile_private')) {
+            $store['phone_mobile_private'] = $request->phone_mobile_private;
+        } else {
+            $store['phone_mobile_private'] = 0;
+        }  
+
+        // If checkbox is empty, asign 'active' as 0
+        if($request->has('phone_alt_private')) {
+            $store['phone_alt_private'] = $request->phone_alt_private;
+        } else {
+            $store['phone_alt_private'] = 0;
+        }  
+
+        Members::update($store);
+
+        return redirect()->route('members.index')->with('sucess', 'Membes Updated');
     }
 
     /**
@@ -80,6 +150,7 @@ class MembersController extends Controller
      */
     public function destroy(Members $members)
     {
-        //
+        $members->delete();
+        return redirect()->route('members.index')->with('sucess', 'Members Deleted');
     }
 }

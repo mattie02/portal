@@ -85,6 +85,7 @@
                             <a href="{{ route('home')}}" class="list-group-item list-group-item-action active">Home</a>
                             <a href="{{ route('member_type.index') }}" class="list-group-item list-group-item-action">Member Types</a>
                             <a href="{{ route('users.index') }}" class="list-group-item list-group-item-action">Manage Users</a>
+                            <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action">Manage Members</a>
                         </div>
                     </div>
 
