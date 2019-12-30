@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 // Controles register
-Auth::routes();
-//Auth::routes(['register' => false]);
+//Auth::routes();
+Auth::routes(['register' => false]);
 
 
 Route::prefix('dashboard')->middleware('auth')->group(function() {
