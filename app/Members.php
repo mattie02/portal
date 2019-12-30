@@ -27,4 +27,8 @@ class Members extends Model
         'mem_sponser_id',
         'user_id'
     ];
+
+    public function memtype() {
+        return $this->belongsTo(MemberType::class, 'mem_type_id');
+    }
 }

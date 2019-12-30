@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Members;
+use App\MemberType;
 use Illuminate\Http\Request;
 
 class MembersController extends Controller
@@ -15,7 +16,8 @@ class MembersController extends Controller
     public function index()
     {
         return view('dashboard.members.index', [
-            'data' => Members::latest()->get()
+            'data' => Members::latest()->get(),
+            'memtypes' => MemberType::latest()->get()
         ]);
     }
 
@@ -27,7 +29,9 @@ class MembersController extends Controller
     public function create()
     {
         return view('dashboard.members.create', [
-            'data' => new Members
+            'data' => new Members,
+            'allmem' => Members::latest()->get(),
+            'memtypes' => MemberType::latest()->get()            
         ]);
     }
 
@@ -95,7 +99,9 @@ class MembersController extends Controller
     {
         //dd($member);
         return view('dashboard.members.edit', [
-            'data' => $member
+            'data' => $member,
+            'allmem' => Members::latest()->get(),
+            'memtypes' => MemberType::latest()->get()
         ]);
     }
 

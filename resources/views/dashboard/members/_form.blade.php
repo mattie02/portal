@@ -84,14 +84,31 @@
     <input type="text" class="form-control" id="zip" name="zip" value="{{ old('zip', $data->zip) }}">
 </div>
  
+
+
 <div class="form-group">
-    <label for="mem_type_id">Member Type</label>
-    <input type="text" class="form-control" id="mem_type_id" name="mem_type_id" value="{{ old('mem_type_id', $data->mem_type_id) }}">
+    <label for="mem_type_id">Member Type</label><br>
+    <select id="mem_type_id" name="mem_type_id">        
+        @foreach($memtypes as $memtype)
+            <option value="{{ $memtype->id }}" {{ $memtype->id === $data->mem_type_id ? 'selected' : '' }}>{{ $memtype->label }}</option>
+        @endforeach
+    </select>
+
+    {{-- <input type="text" class="form-control" id="mem_type_id" name="mem_type_id" value="{{ old('mem_type_id', $data->mem_type_id) }}"> --}}
 </div>
 
 <div class="form-group">
-    <label for="mem_sponser_id">Member Sponser</label>
-    <input type="text" class="form-control" id="mem_sponser_id" name="mem_sponser_id" value="{{ old('mem_sponser_id', $data->mem_sponser_id) }}">
+    <label for="mem_sponser_id">Member's Sponser</label><br>
+
+    <select id="mem_sponser_id" name="mem_sponser_id">   
+        <option value=0 {{ $data->mem_sponser_id == NULL ? 'selected' : '' }}></option>     
+        @foreach($allmem as $sponser)
+            <option value="{{ $sponser->id }}" {{ ($sponser->id === $data->mem_sponser_id) && !NULL ? 'selected' : '' }}>{{ $sponser->fname }}, {{ $sponser->lname }}</option>
+        @endforeach
+    </select>
+
+    
+    {{-- <input type="text" class="form-control" id="mem_sponser_id" name="mem_sponser_id" value="{{ old('mem_sponser_id', $data->mem_sponser_id) }}"> --}}
 </div>
 
 <div class="form-group">

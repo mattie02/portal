@@ -12,4 +12,9 @@ class MemberType extends Model
         'description',
         'active'
     ];
+
+    public function members() {
+        // select * from articles where user_id =
+        return $this->hasMany(Members::class);
+    }
 }
