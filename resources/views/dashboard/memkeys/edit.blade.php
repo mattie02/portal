@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('member_keys.update', $data->id) }}" method="POST">
+                    <form action="{{ route('member_keys.update', 1) }}" method="POST">
 
                         {{csrf_field()}}
                         {{method_field('PUT')}}
