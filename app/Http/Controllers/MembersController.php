@@ -122,7 +122,7 @@ class MembersController extends Controller
         ]);
 
         $store = $request->all();
-        unset($store['_token']);
+        //unset($store['_token']);
 
         // If checkbox is empty, asign 'active' as 0
         if($request->has('email_private')) {
