@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 // Controles register
-//Auth::routes();
-Auth::routes(['register' => false]);
+Auth::routes();
+//Auth::routes(['register' => false]);
 
 
 Route::prefix('dashboard')->middleware('auth')->group(function() {
@@ -35,4 +35,17 @@ Route::prefix('dashboard')->middleware('auth')->group(function() {
     Route::resource('/users', 'ManageUsersController');
     Route::resource('/members', 'MembersController');
 
+    Route::resource('/door_keys', 'DoorKeysController', [
+        //Change URI name
+        'parameters' => [
+            'door_keys' => 'key'
+        ]
+    ]); 
+
+    Route::resource('/member_keys', 'MemberKeysController', [
+        //Change URI name
+        'parameters' => [
+            'member_keys' => 'memkeys'
+        ]
+    ]); 
 });
