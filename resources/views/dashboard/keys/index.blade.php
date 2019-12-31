@@ -11,6 +11,7 @@
                      <table class="table table-bordered data-table">
                         <thead>
                             <tr>
+                                <th>label</th>
                                 <th>Key Number</th>
                                 <th width="250px">Action</th>
                             </tr>
@@ -19,7 +20,9 @@
                         <tbody>
                             @foreach ($data as $d)
                                 <tr>
+                                    <td>{{ $d->label }}</td>
                                     <td>{{ $d->key }}</td>
+                                    <td>{{ $d->active == 1 ? 'Active' : 'Not Active'  }}</td>
                                 <td>
                                     <form action="{{ route('door_keys.edit', $d->id) }}"><input type="submit" value="Edit"/></form>
                                     

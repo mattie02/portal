@@ -15,7 +15,9 @@ class CreateDoorKeysTable extends Migration
     {
         Schema::create('door_keys', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('label');
             $table->string('key');
+            $table->tinyInteger('active');
             $table->timestamps();
         });
     }

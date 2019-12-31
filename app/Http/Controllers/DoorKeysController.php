@@ -43,6 +43,12 @@ class DoorKeysController extends Controller
             'key' => 'required|max:255'
         ]);
 
+        if($request->has('active')) {
+            $store['active'] = $request->active;
+        } else {
+            $store['active'] = 0;
+        }
+
         $store = $request->all();
 
         DoorKeys::create($store);
@@ -87,6 +93,13 @@ class DoorKeysController extends Controller
         ]);
 
         $store = $request->all();
+
+        if($request->has('active')) {
+            $store['active'] = $request->active;
+        } else {
+            $store['active'] = 0;
+        }
+
         $key->update($store);
 
         return redirect()->route('door_keys.index')->with('sucess', 'Key Updated');

@@ -7,6 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(DoorKeys::class, function (Faker $faker) {
     return [
-        'key' => rand(100000000, 9999999999)
+        'label'  => $faker->name,
+        'key'    => rand(100000000, 9999999999),
+        'active' => rand(0,1)
     ];
 });
