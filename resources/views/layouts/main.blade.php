@@ -87,7 +87,7 @@
                             <a href="{{ route('users.index') }}" class="list-group-item list-group-item-action">Manage Users</a>
                             <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action">Manage Members</a>
                             <a href="{{ route('door_keys.index') }}" class="list-group-item list-group-item-action">Manage Door Keys</a>
-                            <a href="{{ route('member_keys.index') }}" class="list-group-item list-group-item-action">Manage Door Key Pairs</a>
+                            {{-- <a href="{{ route('member_keys.index') }}" class="list-group-item list-group-item-action">Manage Door Key Pairs</a> --}}
 
                         </div>
                     </div>

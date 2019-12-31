@@ -41,11 +41,4 @@ Route::prefix('dashboard')->middleware('auth')->group(function() {
             'door_keys' => 'key'
         ]
     ]); 
-
-    Route::resource('/member_keys', 'MemberKeysController', [
-        //Change URI name
-        'parameters' => [
-            'member_keys' => 'memkeys'
-        ]
-    ]); 
 });
