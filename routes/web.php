@@ -41,4 +41,6 @@ Route::prefix('dashboard')->middleware('auth')->group(function() {
             'door_keys' => 'key'
         ]
     ]); 
+
+    Route::resource('/notes', 'NotesController');
 });

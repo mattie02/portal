@@ -88,32 +88,42 @@
 
 <div class="form-group">
     <label for="mem_type_id">Member Type</label><br>
-    <select id="mem_type_id" name="mem_type_id">        
+    <select class="form-control" id="mem_type_id" name="mem_type_id">        
         @foreach($memtypes as $memtype)
             <option value="{{ $memtype->id }}" {{ $memtype->id === $data->mem_type_id ? 'selected' : '' }}>{{ $memtype->label }}</option>
         @endforeach
     </select>
 
-    {{-- <input type="text" class="form-control" id="mem_type_id" name="mem_type_id" value="{{ old('mem_type_id', $data->mem_type_id) }}"> --}}
 </div>
 
 <div class="form-group">
     <label for="mem_sponser_id">Member's Sponser</label><br>
 
-    <select id="mem_sponser_id" name="mem_sponser_id">   
+    <select class="form-control" id="mem_sponser_id" name="mem_sponser_id">   
         <option value=0 {{ $data->mem_sponser_id == NULL ? 'selected' : '' }}></option>     
         @foreach($allmem as $sponser)
             <option value="{{ $sponser->id }}" {{ ($sponser->id === $data->mem_sponser_id) && !NULL ? 'selected' : '' }}>{{ $sponser->fname }}, {{ $sponser->lname }}</option>
         @endforeach
     </select>
 
-    
-    {{-- <input type="text" class="form-control" id="mem_sponser_id" name="mem_sponser_id" value="{{ old('mem_sponser_id', $data->mem_sponser_id) }}"> --}}
 </div>
 
 <div class="form-group">
+    <label for="door_key">Member's Door Keys</label><br>
+
+    <select class="form-control" multiple id="door_key" name="door_key[]">   
+        {{-- <option value=0 {{ $data->mem_sponser_id == NULL ? 'selected' : '' }}></option>      --}}
+        @foreach($doorkeys as $key)
+            <option value="{{ $key->id }}" {{ in_array($key->id, $selkeys) ? 'selected' : '' }}>{{ $key->label }},     {{ ($key->active ? '(Active)' : '(Not Active)') }}</option>
+
+        @endforeach
+    </select>
+
+</div>
+
+{{-- <div class="form-group">
     <label for="user_id">User ID</label>
     <input type="text" class="form-control" id="user_id" name="user_id" value="{{ old('user_id', $data->user_id) }}">
-</div>
+</div> --}}
 
 <button type="submit" class="btn btn-primary">{{ $submitButtonText ?? 'Save' }}</button>

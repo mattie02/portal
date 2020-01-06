@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Members;
 use App\MemberType;
+use App\DoorKeys;
+use App\Notes;
+use App\User;
 use Illuminate\Http\Request;
 
 class MembersController extends Controller
@@ -31,7 +34,10 @@ class MembersController extends Controller
         return view('dashboard.members.create', [
             'data' => new Members,
             'allmem' => Members::latest()->get(),
-            'memtypes' => MemberType::latest()->get()            
+            'memtypes' => MemberType::latest()->get(), 
+            // 'doorkeys' => DoorKeys::where('active', 1)->all() // select door_keys where active = 1
+            'doorkeys' => DoorKeys::latest()->get(), // select door_keys where active = 1
+
         ]);
     }
 
@@ -74,7 +80,13 @@ class MembersController extends Controller
         }               
 
 
-        Members::create($store);
+        $member = Members::create($store);
+
+        //attaches door keys to pick table 
+        if($request->has('door_key')) {
+            $member->keys()->attach($request->door_key);
+        }
+
         return redirect()->route('members.index')->with('sucess', 'Member Created');
     }
 
@@ -97,11 +109,15 @@ class MembersController extends Controller
      */
     public function edit(Members $member)
     {
-        //dd($member);
+        //dd($member->all());
         return view('dashboard.members.edit', [
             'data' => $member,
             'allmem' => Members::latest()->get(),
-            'memtypes' => MemberType::latest()->get()
+            'memtypes' => MemberType::latest()->get(),
+            'doorkeys' => DoorKeys::latest()->get(), // select door_keys where active = 1
+            'selkeys'  => $member->keys->pluck('id')->toArray(),
+            'notes'    => Notes::where('member_id', $member->id)->get(),
+            'users'    => User::latest()->get()
         ]);
     }
 
@@ -114,6 +130,7 @@ class MembersController extends Controller
      */
     public function update(Request $request, Members $member)
     {
+        //dd($request->all());
         $this->validate($request, [
             'lname'                => 'required|max:255',
             'fname'                => 'required|max:255',
@@ -146,6 +163,10 @@ class MembersController extends Controller
         }  
 
         $member->update($store);
+
+        if($request->has('door_key')) {
+            $member->keys()->sync($request->door_key);
+        }
 
         return redirect()->route('members.index')->with('sucess', 'Membes Updated');
     }

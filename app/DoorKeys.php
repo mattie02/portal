@@ -11,4 +11,8 @@ class DoorKeys extends Model
         'key',
         'active' 
     ];
+
+    public function members() {
+        return $this->belongsToMany(Members::class);
+    }
 }

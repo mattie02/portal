@@ -21,8 +21,40 @@
                                     'submitButtonText' => 'Save'
                                 ])
 
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                    <div class="card-header">Notes</div>
+        
+                    <div class="card-body">
+
+                        @if($notes->count() > 0)
+                        @foreach($notes as $note)
+
+                        {{ $note->body }} 
+                        <br>
+                        {{ $note->created_at }} By: {{ $note->user->name }}
+                        <hr>
+
+                        @endforeach
                         
-                        
+                        @endif
+                                
+                    </div>
+                </div>
+
+            <div class="card">
+                <div class="card-header">Notes</div>
+    
+                <div class="card-body">
+                    <form action="{{ route('notes.store') }}" method="POST">
+                        {{csrf_field()}}
+    
+                        @include('dashboard.members._form_notes')
+    
+                            
                     </form>
                 </div>
             </div>

@@ -24,11 +24,15 @@ class Members extends Model
         'state',
         'zip',
         'mem_type_id',
-        'mem_sponser_id',
-        'user_id'
+        'mem_sponser_id'
+        // 'user_id'
     ];
 
     public function memtype() {
         return $this->belongsTo(MemberType::class, 'mem_type_id');
+    }
+
+    public function keys() {
+        return $this->belongsToMany(DoorKeys::class, 'member_keys', 'member_id', 'key_id');
     }
 }

@@ -32,6 +32,8 @@
                                         {{csrf_field()}}
                                         <input type="submit" class="btn btn-danger" value="Delete"/>
                                     </form>
+
+                                    
                                 </td>
 
 
