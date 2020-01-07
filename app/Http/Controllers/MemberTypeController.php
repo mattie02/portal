@@ -41,7 +41,8 @@ class MemberTypeController extends Controller
     {
         // Validate the values comming in
         $this->validate($request, [
-            'label' => 'required|min:5|max:255'
+            'label'       => 'required|min:5|max:255',
+            'description' => 'required'
         ]);
 
         $store = $request->all();
@@ -92,8 +93,8 @@ class MemberTypeController extends Controller
     {
         // Validate the values comming in
         $this->validate($request, [
-            'label' => 'required|min:5|max:255'
-        ]);
+            'label'       => 'required|min:5|max:255',
+            'description' => 'required'        ]);
 
         $store = $request->all();
 
