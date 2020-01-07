@@ -5,14 +5,19 @@
 
 
 <div class="form-group">
-    <label for="email">email</label>
+    <label for="email">Email</label>
     <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $data->email) }}">
 </div>
     
 <div class="form-group">
-        <label for="password">password</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password">
+</div>
+
+<div class="form-group">
+    <label for="password_confirmation">Re-Enter password</label>
+    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+</div>
 
 
 <br>

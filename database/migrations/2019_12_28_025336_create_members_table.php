@@ -34,13 +34,13 @@ class CreateMembersTable extends Migration
             $table->date('approval_date')->nullable();
 
             // Address
-            $table->string('street_address');
-            $table->string('city');
-            $table->string('state');
-            $table->string('zip');
+            $table->string('street_address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
 
             // Membership Info
-            $table->unsignedBigInteger('mem_type_id');
+            $table->unsignedBigInteger('mem_type_id')->nullable();
             $table->unsignedBigInteger('mem_sponser_id')->nullable();
 
             // UID

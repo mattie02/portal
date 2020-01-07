@@ -37,7 +37,7 @@ class MembersController extends Controller
             'memtypes' => MemberType::latest()->get(), 
             // 'doorkeys' => DoorKeys::where('active', 1)->all() // select door_keys where active = 1
             'doorkeys' => DoorKeys::latest()->get(), // select door_keys where active = 1
-            'selkeys'  => [0] // HACK
+            'selkeys'  => [] // HACK
         ]);
     }
 
@@ -53,7 +53,8 @@ class MembersController extends Controller
             'lname'                => 'required|max:255',
             'fname'                => 'required|max:255',
             'dob'                  => 'required',
-            'email'                => 'required|max:255'
+            'email'                => 'required|max:255',
+            'application_date'     => 'required'
         ]);
 
         $store = $request->all();
@@ -135,7 +136,8 @@ class MembersController extends Controller
             'lname'                => 'required|max:255',
             'fname'                => 'required|max:255',
             'dob'                  => 'required',
-            'email'                => 'required|max:255'
+            'email'                => 'required|max:255',
+            'application_date'     => 'required'
         ]);
 
         $store = $request->all();

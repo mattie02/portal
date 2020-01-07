@@ -40,7 +40,8 @@ class DoorKeysController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'key' => 'required|max:255'
+            'label' => 'required|max:255',
+            'key'   => 'required|max:255'
         ]);
 
         if($request->has('active')) {
@@ -89,7 +90,8 @@ class DoorKeysController extends Controller
     public function update(Request $request, DoorKeys $key)
     {
         $this->validate($request, [
-            'key' => 'required'
+            'label' => 'required|max:255',
+            'key'   => 'required|max:255'
         ]);
 
         $store = $request->all();

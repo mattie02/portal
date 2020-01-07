@@ -16,6 +16,10 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'body' => 'required|min:3|max:65535'
+        ]);
+        
         $store = $request->all();
         if($request->has('parent_id')) {
             $store['parent_id'] = $request->parent_id;
