@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(MemberKeys::class, function (Faker $faker) {
     return [
-        'member_id' => rand(1,99),
-        'key_id'    => rand(1,99)
+        'member_id' => factory(\App\Members::class),
+        'key_id'    => factory(\App\DoorKeys::class)
     ];
 });

@@ -77,7 +77,7 @@ class ManageUsersController extends Controller
     public function edit(User $user)
     {
         return view('dashboard.manusers.edit', [
-            'data' => $user
+            'data'     => $user
         ]);
     }
 

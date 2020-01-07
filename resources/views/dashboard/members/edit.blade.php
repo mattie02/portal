@@ -46,7 +46,7 @@
                 </div>
 
             <div class="card">
-                <div class="card-header">Notes</div>
+                <div class="card-header">New Note</div>
     
                 <div class="card-body">
                     <form action="{{ route('notes.store') }}" method="POST">

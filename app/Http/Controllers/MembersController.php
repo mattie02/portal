@@ -37,7 +37,6 @@ class MembersController extends Controller
             'memtypes' => MemberType::latest()->get(), 
             // 'doorkeys' => DoorKeys::where('active', 1)->all() // select door_keys where active = 1
             'doorkeys' => DoorKeys::latest()->get(), // select door_keys where active = 1
-
         ]);
     }
 

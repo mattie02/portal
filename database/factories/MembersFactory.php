@@ -22,8 +22,8 @@ $factory->define(Members::class, function (Faker $faker) {
         'city'                 => $faker->city,
         'state'                => $faker->state,
         'zip'                  => $faker->numberBetween(10000,99999),
-        'mem_type_id'          => $faker->numberBetween(1,10),
-        'mem_sponser_id'       => $faker->numberBetween(1,99),
-        'user_id'              => $faker->numberBetween(1,99)
+        'mem_type_id'          => factory(\App\MemberType::class),
+        'mem_sponser_id'       => rand(0,100)
+        // 'user_id'              => $faker->numberBetween(1,99)
     ];
 });

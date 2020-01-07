@@ -1,6 +1,6 @@
 
 <div class="form-group">
-    <label for="notes">Notes</label>
+    {{-- <label for="notes">Note</label> --}}
     <input type="textarea" class="form-control" id="body" name="body">
 </div>
 
