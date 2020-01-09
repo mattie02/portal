@@ -22,20 +22,19 @@
                                 <tr>
                                     <td>{{ $d->label }}</td>
                                     <td>{{ $d->active == 1 ? 'Active' : 'Not Active' }}</td>                                   
-                                {{-- <td><a href="{{ route('member_type.edit', $d->id) }}">Edit</a> | <a href="{{ route('member_type.destroy', $d->id) }}">Delete</a></td> --}}
                                 <td>
                                     <form action="{{ route('member_type.edit', $d->id) }}"><input type="submit" value="Edit"/></form>
                                     
-                                    <form action="{{ route('member_type.destroy', $d->id) }}" method="POST">
+                                    <form class="delete" action="{{ route('member_type.destroy', $d->id) }}" method="POST">
                                         {{method_field('DELETE')}}
                                         {{csrf_field()}}
-                                        <input type="submit" class="btn btn-danger" value="Delete"/>
+                                        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete"/>
                                     </form>
+
                                 </td>
-
-
                                 </tr>    
                             @endforeach
+
                         </tbody>
                     </table>
 

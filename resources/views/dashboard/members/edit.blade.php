@@ -25,26 +25,27 @@
                 </div>
             </div>
 
+            <!-- Notes about the user -->
             <div class="card">
                     <div class="card-header">Notes</div>
         
                     <div class="card-body">
 
                         @if($notes->count() > 0)
-                        @foreach($notes as $note)
-
-                        {{ $note->body }} 
-                        <br>
-                        {{ $note->created_at }} By: {{ $note->user->name }}
-                        <hr>
-
-                        @endforeach
-                        
+                            @foreach($notes as $note)
+                                {{ $note->body }} 
+                                <br>
+                                {{ $note->created_at }} By: {{ $note->user->name }}
+                                <hr>
+                            @endforeach
+                        @else
+                        <h4>*No Notes*</h4>
                         @endif
                                 
                     </div>
                 </div>
 
+            <!-- Create a new note about user -->
             <div class="card">
                 <div class="card-header">New Note</div>
     

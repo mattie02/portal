@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'laravel') }}</title> --}}
+    <title>Brigewire Portal</title>
+
 
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
@@ -26,7 +28,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{-- {{ config('app.name', 'Brigewire Portal') }} --}}
+                    Brigewire Portal
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -82,13 +85,11 @@
 
                     <div class="col-md-2">
                         <div class="list-group">
-                            <a href="{{ route('home')}}" class="list-group-item list-group-item-action active">Home</a>
-                            <a href="{{ route('member_type.index') }}" class="list-group-item list-group-item-action">Member Types</a>
-                            <a href="{{ route('users.index') }}" class="list-group-item list-group-item-action">Manage Users</a>
-                            <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action">Manage Members</a>
-                            <a href="{{ route('door_keys.index') }}" class="list-group-item list-group-item-action">Manage Door Keys</a>
-                            {{-- <a href="{{ route('member_keys.index') }}" class="list-group-item list-group-item-action">Manage Door Key Pairs</a> --}}
-
+                            <a href="{{ route('home')}}" class="list-group-item list-group-item-action {{ Request::is('dashboard/home') ? 'active' : ''}} ">Home</a>
+                            <a href="{{ route('member_type.index') }}" class="list-group-item list-group-item-action {{ Request::is('dashboard/member_type*') ? 'active' : ''}} ">Member Types</a>
+                            <a href="{{ route('users.index') }}" class="list-group-item list-group-item-action {{ Request::is('dashboard/users*') ? 'active' : ''}} ">Manage Users</a>
+                            <a href="{{ route('members.index') }}" class="list-group-item list-group-item-action {{ Request::is('dashboard/members*') ? 'active' : ''}} ">Manage Members</a>
+                            <a href="{{ route('door_keys.index') }}" class="list-group-item list-group-item-action {{ Request::is('dashboard/door_keys*') ? 'active' : ''}} ">Manage Door Keys</a>
                         </div>
                     </div>
 

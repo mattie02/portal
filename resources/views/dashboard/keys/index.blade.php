@@ -29,7 +29,7 @@
                                     <form action="{{ route('door_keys.destroy', $d->id) }}" method="POST">
                                         {{method_field('DELETE')}}
                                         {{csrf_field()}}
-                                        <input type="submit" class="btn btn-danger" value="Delete"/>
+                                        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete"/>
                                     </form>
                                 </td>
 
