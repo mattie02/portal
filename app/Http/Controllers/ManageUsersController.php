@@ -95,7 +95,7 @@ class ManageUsersController extends Controller
         $this->validate($request, [
             'name'                  => 'required|min:3|max:255',
             'email'                 => 'required|email|unique:users,email,'.$user->id, // Two users can't have the same email
-            'password'              => 'required|confirmed|min:8',
+            // 'password'              => 'required|confirmed|min:8',
         ]);
 
         $store = $request->all();
@@ -120,10 +120,6 @@ class ManageUsersController extends Controller
      */
     public function destroy(User $user)
     {
-
-        // $user->delete();
-        // return redirect()->route('users.index')->with('sucess', 'USER HAS BEEN KILLED >:D');
-
         if(Auth::id() != $user->id) {
             $user->delete();
             return redirect()->route('users.index')->with('sucess', 'USER HAS BEEN KILLED >:D');

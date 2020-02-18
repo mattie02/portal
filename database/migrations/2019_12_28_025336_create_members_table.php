@@ -43,9 +43,6 @@ class CreateMembersTable extends Migration
             $table->unsignedBigInteger('mem_type_id')->nullable();
             $table->unsignedBigInteger('mem_sponser_id')->nullable();
 
-            // UID
-            $table->unsignedBigInteger('user_id')->nullable();
-
             $table->timestamps();
         });
     }

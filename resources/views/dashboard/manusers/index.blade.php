@@ -24,16 +24,16 @@
                                     <td>{{ $d->name }}</td>
                                     <td>{{ $d->email }}</td>   
                                     <td>{{ $d->created_at }}</td>                                                                   
-                                {{-- <td><a href="{{ route('member_type.edit', $d->id) }}">Edit</a> | <a href="{{ route('member_type.destroy', $d->id) }}">Delete</a></td> --}}
-                                <td>
-                                    <form action="{{ route('users.edit', $d->id) }}"><input type="submit" value="Edit"/></form>
-                                    
-                                    <form action="{{ route('users.destroy', $d->id) }}" method="POST">
-                                        {{method_field('DELETE')}}
-                                        {{csrf_field()}}
-                                        <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete"/>
-                                    </form>
-                                </td>
+
+                                    <td>
+                                        <form action="{{ route('users.edit', $d->id) }}"><input type="submit" value="Edit"/></form>
+                                        
+                                        <form action="{{ route('users.destroy', $d->id) }}" method="POST">
+                                            {{method_field('DELETE')}}
+                                            {{csrf_field()}}
+                                            <input type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')" value="Delete"/>
+                                        </form>
+                                    </td>
 
 
                                 </tr>    
