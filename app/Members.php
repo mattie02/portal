@@ -25,7 +25,6 @@ class Members extends Model
         'zip',
         'mem_type_id',
         'mem_sponser_id'
-        // 'user_id'
     ];
 
     public function memtype() {

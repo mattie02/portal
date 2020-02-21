@@ -20,12 +20,6 @@ class CreateNotesTable extends Migration
             $table->unsignedBigInteger('user_id'); //writen by
             $table->text('body')->nullable();
             $table->timestamps();
-
-            // // Delete on cascade
-            // $table->foreign('member_id')
-            //       ->references('id')
-            //       ->on('members')
-            //       ->onDelete('cascade');
         });
     }
 
